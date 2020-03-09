@@ -19,3 +19,7 @@ dependencies:
   condition: prometheus.enabled
   version: "~9.3.0"
   repository:  "https://kubernetes-charts.storage.googleapis.com/"
+- name: "floki"
+  condition: floki.enabled
+  version: "~9.3.0"
+  repository:  "file://../floki"
