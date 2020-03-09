@@ -17,3 +17,6 @@ grafana:
 
 prometheus:
   enabled: false
+
+floki:
+  enabled: false

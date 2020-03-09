@@ -1,0 +1,52 @@
+---
+lokiurl: "http://loki/api/prom/push"
+
+brokerList: "broker_list"
+
+topicPattern: "^logging-*"
+
+affinity: {}
+
+annotations: {}
+
+deploymentStrategy: RollingUpdate
+
+image:
+  repository: trvale/loki
+  tag: 1.3.0
+  pullPolicy: IfNotPresent
+
+nameOverride: floki
+
+## Node labels for pod assignment
+## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
+nodeSelector: {}
+
+## Pod Labels
+podLabels: {}
+
+## Assign a PriorityClassName to pods if set
+# priorityClassName:
+
+#resources:
+#  limits:
+#    memory: 100Mi
+#  requests:
+#    cpu: 100m
+#    memory: 100Mi
+
+serviceAccount:
+  create: true
+  name:
+
+## Tolerations for pod assignment
+## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+tolerations:
+- key: node-role.kubernetes.io/master
+  effect: NoSchedule
+
+serviceMonitor:
+  enabled: false
+  interval: ""
+  additionalLabels: {}
+  # scrapeTimeout: 10s
